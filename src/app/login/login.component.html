@@ -1,0 +1,51 @@
+<div class="login-component-div" fxLayout fxLayoutAlign="center center">
+  <mat-card class="login-card">
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <mat-toolbar fxFlexOrder="1">
+        <span>
+          <img id="company-logo" src="../../assets/white_logo.png" alt="floatbot img" width="160" height="40.7" />
+        </span>
+        <span fxFlex></span>
+        <span fxLayout="column" fxLayoutGap="0px" fxLayoutAlign="start start">
+          <label fxFlex fxFlexFill>Login</label>
+          <label class="mat-small" fxFlex fxFlexFill>Live chat</label>
+        </span>
+      </mat-toolbar>
+      <form class="login-form" fxFlexOrder="2" [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+        <div fxLayout="column" fxFlexAlign="start start">
+          <div fxFlexOrder="1" class="login-form-content">
+            <mat-form-field class="login-full-width">
+              <input matInput placeholder="Email" formControlName="emailFormControl" tabindex="1">
+              <mat-error *ngIf="email.invalid || (email.dirty || email.touched)">
+                <label *ngIf="email.hasError('email')">Please enter a valid email address</label>
+                <label *ngIf="email.hasError('required')">Email is <strong>required</strong></label>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="login-full-width">
+              <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" formControlName="passwordFormControl" tabindex="2" autocomplete="false">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="password.invalid || (password.dirty || password.touched)">
+                <label *ngIf="password.hasError('required')">Password is <strong>required</strong></label>
+                <label *ngIf="password.hasError('minlength')">Password should be minimum <strong>6 character long</strong></label>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlexOrder="2" fxFlex fxFlexFill>
+            <div class="login-form-action-panel" fxLayout="row" fxLayoutAlign="start start">
+              <div fxFlex fxFlexFill>
+                <div fxLayout="column" fxLayoutAlign="start start">
+                  <div fxFlex fxFlexFill>
+                    <a class="mat-small" routerLink="/forgotpassword" tabindex="-1">Forgot Password</a>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex fxLayoutAlign="end start">
+                <button type="submit" mat-raised-button color="primary" tabindex="3">Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </mat-card>  
+</div>

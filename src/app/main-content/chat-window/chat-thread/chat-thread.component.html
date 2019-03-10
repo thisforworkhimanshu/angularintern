@@ -1,0 +1,49 @@
+<div class="no-messages" fxLayout="row" fxLayoutAlign="center center" *ngIf="messages.length === 0 else ifMessagesAreThere">
+  <label>No Messages</label>
+</div>
+<ng-template #ifMessagesAreThere>
+  <div class="mesgs">
+    <div class="msg_history">
+      <span *ngIf="showSpinner" style="margin: 10px 10px 0 10px;" layout="row"><span fxFlex></span><mat-spinner [diameter]="22" color="accent"></mat-spinner><span fxFlex></span></span>
+      <div class="message_container" *ngFor="let item of messages">
+        <div *ngIf="item.timestamp > 0 && item.sender === 'system'">
+          <div *ngIf="item.needDate">
+            <span style="margin: 0 10px 0 10px; color: black;" layout="row"><hr fxFlex/><label style="margin-top: 0.5rem; padding-left: 5px; padding-right: 5px; font-size: 0.7em;">{{item.timestamp | date:'fullDate'}}</label><hr fxFlex/></span>
+            <span style="margin: 0 10px 0 10px; color: black;" layout="row"><span fxFlex></span><label style="margin-top: 0.5rem; padding-left: 5px; padding-right: 5px; font-size: 0.7em;">{{item.message}}</label><span fxFlex></span></span>
+          </div>
+          <div *ngIf="!item.needDate">
+            <span style="margin: 0 10px 0 10px; color: black;" layout="row"><span fxFlex></span><label style="margin-top: 0.5rem; padding-left: 5px; padding-right: 5px; font-size: 0.7em;">{{item.message}}</label><span fxFlex></span></span>
+          </div>
+        </div>
+        <div class="incoming_msg" *ngIf="item.sender === 'bot' || item.sender === 'user'">
+          <div class="received_msg">
+          <div class="received_withd_msg">
+            <p>
+              <span style="color: brown;" *ngIf="item.sender === 'bot'">Bot</span>
+              <span style="color: brown;" *ngIf="item.sender === 'user'">User</span>
+              <br/>
+              {{item.message}}
+            </p>
+            <span class="time_date"> {{item.timestamp | date: 'shortTime'}} </span></div>
+          </div>
+        </div>      
+        <div class="outgoing_msg" *ngIf="item.sender === 'agent'">
+          <div class="sent_msg">
+            <p>{{item.message}}</p>
+            <span class="time_date"> {{item.timestamp | date: 'shortTime'}}
+              <span *ngIf="item.message_status === 'U'">
+                <mat-icon style="float:right; padding-right: 10px; font-size: 15px;">pending</mat-icon>
+              </span>
+              <span *ngIf="item.message_status === 'D'">
+                <mat-icon style="float:right; padding-right: 10px; font-size: 15px;">done</mat-icon>
+              </span>
+              <span *ngIf="item.message_status === 'R'">
+                <mat-icon style="float:right; padding-right: 10px; font-size: 15px;">done_all</mat-icon>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

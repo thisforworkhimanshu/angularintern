@@ -1,0 +1,17 @@
+<mat-nav-list role="list">
+  <!-- Active link name i.e active chat, history etc. -->
+  <h3 mat-subheader>{{activelinkName}}</h3>
+  <!-- prints No user if userlist is empty -->
+  <div *ngIf="chatList.length === 0; else userlist" fxLayout="row" fxLayoutAlign="center start">
+    <label>No users in {{activelinkName}}</label>
+  </div>
+  <!-- if user list not empty then show all users from list -->
+  <ng-template #userlist>
+    <!-- on click on anchor tag i.e user, calls chat function having item as parameter i.e. user details -->
+    <a [routerLink]="[item.name,item.id]" mat-list-item *ngFor="let item of chatList" routerLinkActive="active">
+      <img matListAvatar src="../../../assets/noprofile_squre.png">
+      <h4 matLine>{{item.name}}</h4>
+      <label matLine>{{item.ts | date: 'dd/MM/yyyy'}}</label>
+    </a>
+  </ng-template>
+</mat-nav-list>

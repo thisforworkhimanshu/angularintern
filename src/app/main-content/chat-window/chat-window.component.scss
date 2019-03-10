@@ -1,0 +1,89 @@
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+        Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+
+.mainChatThread {
+	background: #f8f9fa;
+	height: calc(100vh - 128px);
+}
+
+.card-content-div {
+	height: calc(100vh - 173px);
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.info-icon {
+    padding: 0 14px;
+    /* color: black; */
+}
+
+.user-profile-image {
+	height: 50px;
+	width: 50px;
+}
+
+.type_msg {
+	border-top: 1px solid #c4c4c4;
+	/* margin: 0 15px 0 15px; */
+	position: relative;
+	height: 40px;
+}
+
+.type_msg textarea {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: medium none;
+	color: #4c4c4c;
+	font-size: 16px;
+	height: 40px;
+	padding: 5px 0px 0px 30px;
+	width: 94%;
+	outline:none;
+	resize: none;
+}
+
+textarea::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
+.msg_send_btn {
+	cursor: pointer;
+	font-size: 15px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30px;
+}
+
+.emoji_button {
+	cursor: pointer;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 30px;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+@media only screen and (max-width: 599px) {
+	.mainChatThread {
+		background: #f8f9fa;
+		height: calc(100vh - 112px);
+	}
+
+	.card-content-div {
+		height: calc(100vh - 158px);
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+
+	.user-profile-image {
+		height: 40px;
+		width: 40px;
+	}
+}

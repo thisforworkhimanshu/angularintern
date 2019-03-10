@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Call</h2>
+<mat-dialog-content>
+
+  <!-- Call Connecting -->
+  <div *ngIf="isCallConnecting">
+    <label style="float: left;">Connecting</label>
+    <mat-progress-bar mode="buffer" color="primary"></mat-progress-bar>
+  </div>
+
+  <!-- Call in progress i.e Connected -->
+  <div *ngIf="isCallConnected">
+    <label style="float: left;">Connected</label>
+    <label style="float: right;">{{hhmmss}}</label>
+    <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+ <button mat-button (click) = "onNoClick()" *ngIf="isCallConnecting">Hang Up</button>
+ <button mat-button (click) = "onYesClick()" *ngIf="isCallConnected">Hang Up</button>
+</mat-dialog-actions>

@@ -1,0 +1,73 @@
+<div class="chat-window">
+  <!-- chat window toolbar, with buttons -->
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <!-- back button to close chat window -->
+      <span>
+        <button mat-button mat-icon-button (click)="onClose()">
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+      </span>
+      <span style="margin-left: 10px;">
+        <img class="user-profile-image" src="../../../assets/noprofile_squre.png" style="border-radius: 100px;">
+      </span>
+      <span class="ml-3">{{chatData.name}}</span>
+      <span class="example-fill-remaining-space"></span>
+      <div *ngIf="toShowInfo else menuWithActions">
+        <!-- call button -->
+        <button mat-button mat-icon-button *ngIf="activeStatus" matTooltip="Call" (click)="openCallDialog()">
+          <mat-icon>call</mat-icon>
+        </button>
+        <!-- close chat -->
+        <button mat-button mat-icon-button *ngIf="activeStatus" matTooltip="End Chat" (click)="onClose()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+      <ng-template #menuWithActions>
+        <!-- Info -->
+        <button mat-button mat-icon-button *ngIf="toShowInfoBtn" matTooltip="Conversation Info" (click)="openDialog()">
+          <mat-icon>info</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="activeStatus">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngIf="activeStatus" (click)="openCallDialog()">
+            <mat-icon>call</mat-icon>
+            <span>Call</span>
+          </button>
+          <button mat-menu-item *ngIf="activeStatus" (click)="onClose()">
+            <mat-icon>clear</mat-icon>
+            <span>End Chat</span>
+          </button>
+        </mat-menu>
+      </ng-template>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <!-- Main chat thread with chat thread and card footer for message input -->
+  <div class="mainChatThread" fxLayout="row" fxLayoutAlign="start start">
+    <div class="chatThread" [fxFlex]="toShowInfo ? '70%' : '100%'" fxFlexFill>
+        <div #scrollMe [scrollTop]="firstTimeBottomScroll ? scrollMe.scrollHeight : scrollTopPixel" class="card-content-div" (scroll)="onScroll($event)">
+          <app-chat-thread (scrollToBottom)="scrollToBottom()" (scrollAfterMessageAdded) = "scrollAfterMessagesAdded()"></app-chat-thread>
+        </div>
+        <!-- Input message textarea -->
+        <div class="type_msg">
+          <emoji-mart [style]="{ position: 'absolute', bottom: '30px'}" 
+            (emojiClick)="addEmoji($event)" *ngIf="emojiPickerShow"></emoji-mart>
+          <button class="emoji_button" mat-button mat-icon-button (click)="showEmojiPicker()">
+            <mat-icon>
+              <ngx-emoji [emoji]="{ id: 'smiley', skin: 3 }" size="20"></ngx-emoji>
+            </mat-icon>
+          </button>
+          <textarea class="write_msg" aria-multiline="true" placeholder="Type a message" value="" name="" [(ngModel)]="typedMessage"></textarea>
+          <button class="msg_send_btn" color="accent" mat-button mat-icon-button matTooltip="Send" (click)="onSendClicked()">
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
+    </div>
+    <!-- user info with conversation details -->
+    <div fxFlex="30%" fxFlexFill *ngIf="toShowInfo">
+      <app-user-info></app-user-info>
+    </div>
+  </div>
+</div>

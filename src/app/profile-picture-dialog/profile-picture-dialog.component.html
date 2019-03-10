@@ -1,0 +1,13 @@
+<!-- Profile picture dialog -->
+<h2 mat-dialog-title>Picture Upload</h2>
+<mat-dialog-content>
+    <!-- Profile picture -->
+    <div style="text-align: center">
+        <img height="120" width="120" src="https://material.angular.io/assets/img/examples/shiba1.jpg" [ngStyle]="{'border-radius': '100px'}">
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <!-- submit button -->
+    <input type="file" #profilepicture [ngStyle]="{'display': 'none'}">
+    <button mat-button (click) = "onYesClick($event)">Upload</button>
+</mat-dialog-actions>

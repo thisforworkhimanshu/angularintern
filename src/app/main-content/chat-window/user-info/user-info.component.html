@@ -1,0 +1,63 @@
+<div class="user-info-div">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Conversation Details
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <label>Total Sessions</label>
+      <br/>
+      <p>{{chatInfo.conversationDetails.totalSession}}</p>
+      <label>Connection Status</label>
+      <br/>
+      <p>{{chatInfo.conversationDetails.connectionStatus}}</p>
+      <label>Last Online</label>
+      <br/>
+      <p>{{chatInfo.conversationDetails.lastOnline | date: 'medium'}}</p>
+      <label>Platform</label>
+      <br/>
+      <p>{{chatInfo.conversationDetails.platform}}</p>
+      <label>Browser Info</label>
+      <br/>
+      <p style="word-wrap: break-word; overflow-wrap: break-word;">
+        {{chatInfo.conversationDetails.browserInfo}}
+      </p>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          About
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <label>Email</label>
+      <br/>
+      <p>{{chatInfo.aboutUser.email}}</p>
+      <label>First Name</label>
+      <br/>
+      <p>{{chatInfo.aboutUser.firstName}}</p>
+      <label>Last Name</label>
+      <br/>
+      <p>{{chatInfo.aboutUser.lastName}}</p>
+      <label>Country</label>
+      <br/>
+      <p>{{chatInfo.aboutUser.country}}</p>
+      <label>State</label>
+      <br/>
+      <p>{{chatInfo.aboutUser.state}}</p>
+      <label>City</label>
+      <br/>
+      <p>{{chatInfo.aboutUser.city}}</p>
+      <label>Phone Number</label>
+      <br/>
+      <p>{{chatInfo.aboutUser.phoneNumber}}</p>
+      <label>Registration Time</label>
+      <br/>
+      <p>{{chatInfo.aboutUser.registrationTime | date:'medium'}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -1,0 +1,35 @@
+.profile-container {
+    height: calc(100vh - 128px);
+    overflow-y: scroll;
+}
+
+.profile-external-card {
+    margin: 10px 0 0 0;
+    width: 600px;
+}
+
+.profile-form {
+    min-width: 150px;
+    max-width: 600px;
+}
+
+.profile-full-width {
+    width: 100%;
+}
+
+.profile-card {
+    max-width: 600px;
+}
+
+.profile-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:599px) {
+    .profile-container {
+        padding: 10px;
+        height: calc(100vh - 108px);
+    }
+}

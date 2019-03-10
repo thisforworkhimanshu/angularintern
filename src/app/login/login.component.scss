@@ -1,0 +1,51 @@
+.login-component-div {
+    background-color: rgba(0, 0, 0, 0.04);
+    height: 100%;
+}
+
+/* materials login card */
+.login-card {
+    width: 500px;
+    min-height: 280px;
+    max-height: 500px;
+}
+
+/* form height width */
+.login-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* obtain full width of form for input */
+.login-full-width {
+    width: 100%;
+}
+
+.mat-card {
+    padding: 0;
+    border-radius: 0;
+}
+
+.login-form-content {
+    padding: 10px;
+}
+
+.login-form-action-panel {
+    padding: 0 10px 0 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    #company-logo {
+        height: 30px;
+        width: 100px;
+    }
+
+    .login-component-div {
+        padding: 10px;
+    }
+}
+
+.login-form a{
+    text-decoration: none;
+}

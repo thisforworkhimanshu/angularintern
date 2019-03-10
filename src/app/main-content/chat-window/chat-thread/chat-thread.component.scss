@@ -1,0 +1,79 @@
+.no-messages {
+	width: 100%;
+	height: 100%;
+}
+.mesgs{
+	float: left;
+	width:100%;
+	height: inherit;
+}
+
+.msg_history {
+	width: 100%;
+	height: inherit;
+}
+
+.sent_msg p {
+	background:#0465ac;
+	border-radius: 15px 15px 0px 15px;
+	font-size: 15px;
+	margin: 0;
+	color: #fff;
+	padding: 5px 10px 5px 12px;
+	width: 100%;
+	word-wrap: break-word;
+}
+
+.incoming_msg {
+	overflow: hidden;
+	margin: 10px 0 10px 0;
+}
+
+.outgoing_msg {
+	overflow: hidden;
+	margin: 10px 0 10px 0;
+}
+
+.sent_msg {
+	float: right;
+	width: 45%;
+	padding: 0 10px 0 0;
+}
+
+.received_withd_msg {
+	width: 45%;
+}
+
+@media only screen and (max-width:599px) {
+	.sent_msg {
+		width: 90%;
+	}
+
+	.received_withd_msg {
+		width: 90%;
+	}	
+}
+
+.received_msg {
+	display: inline-block;
+	padding: 0 0 0 10px;
+	vertical-align: top;
+	width: 100%;
+}
+
+.received_withd_msg p {
+	background: #ebebeb none repeat scroll 0 0;
+	border-radius: 0 15px 15px 15px;
+	color: #646464;
+	font-size: 15px;
+	margin: 0;
+	padding: 5px 10px 5px 12px;
+	width: 100%;
+}
+
+.time_date {
+	color: #747474;
+	display: block;
+	font-size: 12px;
+	margin: 8px 0 0;
+}

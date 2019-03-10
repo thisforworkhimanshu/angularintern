@@ -1,0 +1,9 @@
+<!-- FlexLayout with row and start horizontally as well as vertically too -->
+<div class="main-content" fxLayout="row" fxLayoutAlign="start start">
+    <!-- user list -->
+    <app-chat-user-list class="chatUserList" fxFlex.xs="100%" fxFlex.gt-xs="30%" fxFlexFill></app-chat-user-list>
+    <!-- chat window with chat thread and user info. -->
+    <div class="chatwindow" fxFlex.xs="100%" fxFlex.gt-xs="70%" fxFlexFill>
+        <router-outlet></router-outlet>
+    </div>
+</div>

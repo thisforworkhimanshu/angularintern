@@ -1,0 +1,85 @@
+<!-- whole body container -->
+<!-- class example-is-mobile added when screen width < 599px, class unicorn added when user change the theme to 1 if theme 2 then add alternative class-->
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" [class.alternative]="themeOne">
+  <!-- toolbar -->
+  <mat-toolbar class="example-toolbar" [class.mat-elevation-z4]="true">
+    <button class="toggle_button" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <span>
+      <img id="company-logo" src="../../assets/white_logo.png" alt="floatbot img" width="220" height="40.7" />
+    </span>
+    <span class="spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <!-- menu for asking theme -->
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="changeTheme(0)">
+        <mat-icon>brightness_1</mat-icon>
+        <span>Default</span>
+      </button>
+      <button mat-menu-item (click)="changeTheme(1)">
+          <mat-icon>brightness_1</mat-icon>
+          <span>Theme 1</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  <!-- <div>
+    <mat-divider></mat-divider>
+  </div> -->
+  <!-- side nav container -->
+  <mat-sidenav-container class="example-sidenav-container"  [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <!-- side with nav list -->
+    <mat-sidenav #snav [opened]="mobileQuery.matches ? 'false' : 'true'" [mode]="mobileQuery.matches ? 'over' : 'side'"
+                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matTooltip="Home" matTooltipPosition="after" (click)="onHomeLinkClick()">
+          <i mat-raised-button>
+            <mat-icon>home</mat-icon>
+          </i>
+        </a>
+        <a mat-list-item [routerLink]="['/home', 'active']" routerLinkActive="active" matTooltip="Active Chat" matTooltipPosition="after" (click)="onActiveLinkClick()">
+          <i mat-raised-button>
+            <mat-icon>face</mat-icon>
+          </i>
+        </a>
+        <a mat-list-item [routerLink]="['/home', 'queue']" routerLinkActive="active" matTooltip="Chat Queue" matTooltipPosition="after" (click)="onChatQueueLinkClick()">
+          <i mat-raised-button>
+            <mat-icon>chat</mat-icon>
+          </i>
+        </a>
+        <a mat-list-item [routerLink]="['/home', 'team']" routerLinkActive="active" matTooltip="Team" matTooltipPosition="after" (click)="onTeamLinkClick()">
+          <i mat-raised-button>
+            <mat-icon>group</mat-icon>
+          </i>
+        </a>
+        <a mat-list-item [routerLink]="['/home', 'history']" routerLinkActive="active" matTooltip="History" matTooltipPosition="after" (click)="onHistoryLinkClick()">
+          <i mat-raised-button>
+            <mat-icon>history</mat-icon>
+          </i>
+        </a>
+        <a mat-list-item [routerLink]="['/home', 'bot']" routerLinkActive="active" matTooltip="Bot Users" matTooltipPosition="after" (click)="onBotUsersLinkClicked()">
+          <i mat-raised-button>
+            <mat-icon>person</mat-icon>
+          </i>
+        </a>
+        <a mat-list-item [routerLink]="['/home/profile']" routerLinkActive="active" matTooltip="Profile" matTooltipPosition="after" (click)="onProfileLinkClicked()">
+          <i mat-raised-button>
+            <mat-icon>account_circle</mat-icon>
+          </i>
+        </a>
+        <a mat-list-item matTooltip="Logout" matTooltipPosition="after" (click)="openDialog()">
+          <i mat-raised-button>
+            <mat-icon>exit_to_app</mat-icon>
+          </i>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- side nav contents -->
+    <mat-sidenav-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
